@@ -14,8 +14,8 @@ def take_command():
             print("Listening...")
             voice = listner.listen(source)
             command = listner.recognize_google(voice).lower()
-            if "alexa" in command:
-                command = command.replace("alexa","")        
+            if "dear" in command:
+                command = command.replace("dear","")        
     except:
         pass
     return command
@@ -24,7 +24,7 @@ def talk(command):
     alexa.say(command)
     alexa.runAndWait()
 
-def run_alexa():
+def hello_dear():
     command = take_command()
     if 'time' in command:
         time = datetime.datetime.now().strftime('%I:%m:%p')
@@ -43,4 +43,4 @@ def run_alexa():
 if __name__ == "__main__":
     print("Hello")
     while(True):
-        run_alexa()
+        hello_dear()
