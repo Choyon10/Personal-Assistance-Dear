@@ -19,3 +19,28 @@ def take_command():
     except:
         pass
     return command
+
+def talk(command):  
+    alexa.say(command)
+    alexa.runAndWait()
+
+def run_alexa():
+    command = take_command()
+    if 'time' in command:
+        time = datetime.datetime.now().strftime('%I:%m:%p')
+        print(time)
+        talk(time)
+    elif 'play' in command:
+        print(command)
+        command = command.replace('play','')
+        pywhatkit.playonyt(command)
+    elif 'about' in command or 'search' in command:
+        print(command)
+        command = command.replace('search','').replace('about','')
+        pywhatkit.search(command)
+
+
+if __name__ == "__main__":
+    print("Hello")
+    while(True):
+        run_alexa()
